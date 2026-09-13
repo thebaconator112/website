@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pug scripts</title>
+<meta name="description" content="The best game tweaks for under 5 dollars lifetime!">
+<link rel="icon" href="pug-icon.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+:root{--bg:#06101f;--panel:#081629;--panel2:#0b1c33;--line:#16304f;--line2:#21466f;--text:#eef8ff;--muted:#7d848d;--dim:#5c636c;--white:#f2faff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;color:var(--text);background:radial-gradient(800px 400px at 50% -80px,#18335d20,transparent 70%),var(--bg);font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Consolas,monospace;-webkit-font-smoothing:antialiased}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.025;background-image:linear-gradient(#f2faff 1px,transparent 1px),linear-gradient(90deg,#f2faff 1px,transparent 1px);background-size:80px 80px;mask-image:linear-gradient(to bottom,#000,transparent 70%)}
+a{color:inherit;text-decoration:none}.container{width:min(1120px,calc(100% - 36px));margin:auto}
+.header{position:sticky;top:0;z-index:100;border-bottom:1px solid #f2faff0;background:#06101fd9;backdrop-filter:blur(20px)}
+nav{min-height:70px;display:flex;align-items:center;gap:26px}.brand{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;white-space:nowrap}.brand img{width:33px;height:33px;border-radius:9px;object-fit:cover;border:1px solid #1d4f80}.navlinks{display:flex;gap:2px}.navlinks a{padding:9px 10px;border-radius:7px;color:#8aa8c8;font-size:10px;transition:.18s}.navlinks a:hover,.navlinks a.active{color:#f2faff;background:#0d2542}.spacer{flex:1}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 17px;border-radius:8px;background:#f1f2f3;color:#08090b;font-size:10px;font-weight:700;transition:.2s;border:1px solid #f2faff}.btn:hover{transform:translateY(-2px);box-shadow:0 12px 35px #f2faff12}
+.announce{border-bottom:1px solid #171b20;text-align:center;padding:8px 12px;color:#686f78;font-size:8px;background:#080a0d}.announce b{color:#bfc3c8}.dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:#dce0e3;margin-right:7px;vertical-align:1px;box-shadow:0 0 12px #f2faff6}
+.hero{text-align:center;padding:76px 0 42px}.badge{display:inline-flex;align-items:center;gap:7px;padding:6px 9px;border:1px solid #272d34;border-radius:999px;background:#091a2f;color:#8fb9df;font-size:8px;margin-bottom:18px}.badge b{color:#eaf6ff}.hero h1{margin:0 auto 16px;max-width:900px;font-size:clamp(44px,7vw,76px);line-height:1.02;letter-spacing:-.075em}.hero h1 span{color:#858c95}.desc{max-width:700px;margin:auto;color:#8eabc8;font-size:12px;line-height:1.8}.actions{display:flex;justify-content:center;align-items:center;gap:9px;flex-wrap:wrap;margin-top:27px}.discord{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:11px 17px;border:1px solid #1d4f80;border-radius:8px;background:#091a2f;color:#dff3ff;font-size:10px;font-weight:600;transition:.2s}.discord:hover{background:#12161a;border-color:#2d73b5;transform:translateY(-2px)}.discord svg{width:15px;height:15px;fill:#050607;stroke:#e7e9eb;stroke-width:1.7}.platform{margin-top:16px;color:#6486a8;font-size:8px}.users{display:flex;align-items:center;justify-content:center;gap:11px;margin-top:25px;color:#8db4d8;font-size:9px}.users i{width:38px;height:1px;background:#2b3036}.users strong{font-size:14px;color:#eff9ff}
+.preview-wrap{position:relative}.preview{overflow:hidden;border:1px solid #22282f;border-radius:17px;background:#02060b;box-shadow:0 35px 100px #0009}.preview img{display:block;width:100%;height:auto}.preview-glow{position:absolute;inset:8% 15% -8%;z-index:-1;background:#12315c33;filter:blur(65px);border-radius:50%}
+.section{padding:82px 0}.head{text-align:center;margin-bottom:30px}.eyebrow{margin-bottom:9px;color:#646b74;font-size:8px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}.head h2{margin:0 0 9px;font-size:26px;letter-spacing:-.045em}.head p{margin:0;color:#686f78;font-size:9px}
+.trust{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:13px;overflow:hidden;background:#090c0f;margin-top:22px}.trust-item{text-align:center;padding:22px 10px;border-right:1px solid var(--line)}.trust-item:last-child{border:0}.trust-item strong{display:block;font-size:17px;margin-bottom:6px}.trust-item span{font-size:8px;color:#606770}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card{padding:21px;min-height:153px;border:1px solid var(--line);border-radius:13px;background:linear-gradient(180deg,#091a2f,#080a0d);transition:.2s}.card:hover{transform:translateY(-3px);border-color:#333940;background:#0b1c33}.icon{width:33px;height:33px;display:grid;place-items:center;border:1px solid #1d4f80;border-radius:8px;margin-bottom:15px;color:#e1e4e7;font-size:12px}.card h3{font-size:11px;margin:0 0 8px}.card p{font-size:9px;line-height:1.75;color:#6e757e;margin:0}
+.split{display:grid;grid-template-columns:1.15fr .85fr;gap:13px}.splitcard{padding:26px;border:1px solid var(--line);border-radius:14px;background:#090c0f}.splitcard h3{font-size:14px;margin:0 0 9px}.splitcard>p{font-size:9px;line-height:1.8;color:#6d747c;margin:0 0 20px}.checks{display:grid;gap:9px}.check{font-size:9px;color:#adb2b8}.check:before{content:"✓";margin-right:9px}
+.timeline{display:grid;gap:9px;max-width:850px;margin:auto}.update{display:grid;grid-template-columns:100px 1fr auto;gap:18px;align-items:center;padding:17px 19px;border:1px solid var(--line);border-radius:11px;background:#090c0f}.update .date{color:#626972;font-size:8px}.update h3{margin:0 0 5px;font-size:10px}.update p{margin:0;color:#6c737c;font-size:8px;line-height:1.6}.tag{padding:5px 7px;border:1px solid #1d4f80;border-radius:6px;color:#828991;font-size:7px;white-space:nowrap}
+.pricebox{max-width:600px;margin:auto;padding:32px;text-align:center;border:1px solid #21466f;border-radius:16px;background:linear-gradient(180deg,#0d1115,#090b0e);box-shadow:0 25px 70px #0006}.price{margin:8px 0;font-size:43px;line-height:1;letter-spacing:-.07em;font-weight:700}.price small{font-size:9px;color:#686f78;letter-spacing:0}.pricebox p{max-width:440px;margin:12px auto 20px;color:#707780;font-size:9px;line-height:1.8}.pricebox .btn{margin:0 4px}.pricebox .discord{margin:0 4px}
+.faq{max-width:800px;margin:auto}.faq details{border-bottom:1px solid var(--line);padding:17px 2px}.faq summary{cursor:pointer;font-size:9px;font-weight:600}.faq p{margin:10px 0 0;color:#697078;font-size:9px;line-height:1.7}
+footer{border-top:1px solid #f2faff1;padding:25px 0 31px;color:#6486a8;font-size:8px;display:flex;justify-content:space-between}
+@media(max-width:800px){.navlinks{display:none}.grid,.trust{grid-template-columns:1fr 1fr}.split{grid-template-columns:1fr}.update{grid-template-columns:75px 1fr}.update .tag{display:none}}
+@media(max-width:600px){.container{width:calc(100% - 24px)}nav{min-height:64px}.brand{font-size:11px}.brand img{width:30px;height:30px}.hero{padding:60px 0 34px}.hero h1{font-size:45px}.desc{font-size:10px}.grid,.trust{grid-template-columns:1fr}.section{padding:62px 0}.preview{border-radius:12px}.actions{flex-direction:column}.actions .btn,.actions .discord{width:180px}.pricebox .btn,.pricebox .discord{margin:4px 0;width:100%}footer{flex-direction:column;gap:8px}}
+
+/* v6 motion system */
+html{scroll-padding-top:80px}
+body{overflow-x:hidden}
+.cursor-glow{position:fixed;z-index:0;pointer-events:none;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,#234b8424 0,transparent 68%);transform:translate(-50%,-50%);mix-blend-mode:screen;transition:opacity .25s}
+body>*{position:relative;z-index:1}
+.progress{position:fixed;z-index:200;top:0;left:0;width:0;height:2px;background:#f1f2f3;box-shadow:0 0 16px #f2faff6}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
+.reveal.visible{opacity:1;transform:none}
+.hero .badge{animation:badgeIn .7s ease both}.hero h1{animation:heroUp .8s .08s cubic-bezier(.2,.8,.2,1) both}.hero .desc{animation:heroUp .8s .16s cubic-bezier(.2,.8,.2,1) both}.hero .actions{animation:heroUp .8s .24s cubic-bezier(.2,.8,.2,1) both}.hero .platform{animation:heroUp .8s .32s cubic-bezier(.2,.8,.2,1) both}.hero .users{animation:heroUp .8s .4s cubic-bezier(.2,.8,.2,1) both}
+@keyframes heroUp{from{opacity:0;transform:translateY(18px);filter:blur(5px)}to{opacity:1;transform:none;filter:none}}
+@keyframes badgeIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+@keyframes floatPreview{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.preview{animation:floatPreview 7s ease-in-out infinite}
+.preview:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 20%,#f2faff08 47%,transparent 55%);transform:translateX(-120%);animation:shine 7s 1.5s ease-in-out infinite}
+@keyframes shine{0%,55%{transform:translateX(-120%)}75%,100%{transform:translateX(120%)}}
+.card,.update,.splitcard,.pricebox,.trust-item{will-change:transform}
+.card{position:relative;overflow:hidden}
+.card:before{content:"";position:absolute;inset:0;background:radial-gradient(250px circle at var(--mx,50%) var(--my,50%),#f2fafffff09,transparent 55%);opacity:0;transition:opacity .2s;pointer-events:none}
+.card:hover:before{opacity:1}
+.icon{transition:transform .3s,background .3s}.card:hover .icon{transform:rotate(-6deg) scale(1.08);background:#f2fafffff08}
+.btn,.discord{position:relative;overflow:hidden}.btn:after,.discord:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,#f2faff8 50%,transparent 70%);transform:translateX(-120%);transition:transform .5s}.btn:hover:after,.discord:hover:after{transform:translateX(120%)}
+.trust{animation:softBorder 4s ease-in-out infinite}
+@keyframes softBorder{0%,100%{box-shadow:0 0 0 #f2faff0}50%{box-shadow:0 0 35px #f2faff04}}
+.stat-pop{animation:statPop .55s cubic-bezier(.2,1.4,.4,1)}
+@keyframes statPop{from{opacity:.2;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+.update{transition:transform .25s,border-color .25s,background .25s}.update:hover{transform:translateX(5px);border-color:#353b42;background:#0b1c33}
+.faq details{transition:padding .2s}.faq details[open]{padding-left:10px;padding-right:10px;background:#090c0f}
+.section-divider{height:1px;background:linear-gradient(90deg,transparent,#252b31,transparent);margin:0 auto;width:min(900px,80%)}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+
+
+.btn{background:linear-gradient(135deg,#1b74c9,#43b9ff)!important;color:#04101d!important;border-color:#49bdff!important;box-shadow:0 8px 28px rgba(28,145,230,.20)}
+.btn:hover{box-shadow:0 12px 34px rgba(28,145,230,.34)!important;filter:brightness(1.08)}
+.hero h1 span{color:#55baff!important}.eyebrow,.date{color:#56baff!important}.tag{border-color:#235b8e!important;color:#75bff1!important}
+.preview{box-shadow:0 25px 80px rgba(20,120,210,.16)!important;border-color:#1d4f80!important}
+::selection{background:#39aaff;color:#03101c}
+
+/* V8 BLUE MOTION + SNOW */
+#snow-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:.7}
+.ambient{position:fixed;width:42vw;height:42vw;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;opacity:.16;animation:ambientFloat 12s ease-in-out infinite alternate}
+.ambient-a{background:#168cff;top:-15vw;left:-12vw}.ambient-b{background:#62c8ff;right:-18vw;bottom:-20vw;animation-delay:-5s}
+body>*:not(#snow-canvas):not(.ambient){position:relative;z-index:2}
+@keyframes ambientFloat{from{transform:translate3d(0,0,scale(1))}to{transform:translate3d(35px,25px,0) scale(1.12)}}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 0 rgba(58,170,255,0),0 0 18px rgba(58,170,255,.08)}50%{box-shadow:0 0 34px rgba(58,170,255,.22),0 0 70px rgba(58,170,255,.08)}}
+@keyframes floatCard{0%,100%{transform:translateY(0) rotateX(0)}50%{transform:translateY(-8px) rotateX(1deg)}}
+.hero-card,.product-card,.preview,.feature-card{animation:floatCard 7s ease-in-out infinite}
+.hero-card,.product-card,.preview{animation:floatCard 7s ease-in-out infinite,pulseGlow 5s ease-in-out infinite}
+.button,.btn,.purchase,.discord,.cta{transition:transform .25s ease,box-shadow .25s ease,filter .25s ease}
+.button:hover,.btn:hover,.purchase:hover,.discord:hover,.cta:hover{transform:translateY(-3px) scale(1.025);filter:brightness(1.08)}
+@media(prefers-reduced-motion:reduce){#snow-canvas{display:none}.ambient,.hero-card,.product-card,.preview,.feature-card{animation:none!important}}
+
+</style>
+
+<style id="top-bug-fix">
+html{scroll-padding-top:82px;overflow-x:hidden;margin:0;padding:0}
+body{margin:0!important;padding:0!important;overflow-x:hidden;min-height:100vh}
+/* Keep decorative layers completely out of document flow. */
+#snow-canvas,.ambient,.progress,.cursor-glow{position:fixed!important;top:auto;right:auto;bottom:auto;left:auto}
+#snow-canvas{inset:0!important;width:100vw!important;height:100vh!important}
+.ambient{position:fixed!important}
+.progress{position:fixed!important;top:0!important;left:0!important}
+.cursor-glow{position:fixed!important}
+/* The page content must start at the very top — no accidental spacer. */
+.announce{position:relative!important;margin:0!important;padding:8px 12px!important;min-height:0!important;height:auto!important}
+.header{position:sticky!important;top:0!important;margin:0!important;padding:0!important;z-index:1000!important}
+.header nav{margin:0 auto!important}
+main{margin:0!important;padding:0!important}
+.hero{position:relative;isolation:isolate;margin-top:0!important}
+.snow,.snowfall,.snow-container{pointer-events:none!important;z-index:2!important}
+</style>
+</head>
+<body>
+<canvas id="snow-canvas" aria-hidden="true"></canvas>
+<div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="progress" id="progress"></div><div class="cursor-glow" id="glow"></div>
+<header class="header"><nav class="container">
+<a class="brand" href="index.html"><img src="pug-icon.png" alt=""><span>Pug scripts</span></a>
+<div class="navlinks"><a href="products.html">Products</a><a href="#features">Features</a><a href="#updates">Updates</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></div>
+<div class="spacer"></div><a class="btn" href="https://paritycheats.com/product/pug-scripts-tweaks">Purchase ↗</a>
+</nav></header>
+<div class="announce"><span class="dot"></span><b>Pug scripts</b> — lifetime game tweaks for under $5</div>
+
+<main>
+<section class="hero container">
+<div class="badge"><span class="dot"></span><b>Lifetime access</b> · no recurring payments</div>
+<h1>Game tweaks.<br><span>Kept simple.</span></h1>
+<p class="desc">The best game tweaks for under 5 dollars lifetime!</p>
+<div class="actions">
+<a class="btn" href="https://paritycheats.com/product/pug-scripts-tweaks">Purchase for $4.99 →</a><a class="discord" href="products.html">Explore Products →</a>
+<a class="discord" href="https://discord.gg/hU9RkTymVG" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M19.54 5.31A16.1 16.1 0 0 0 15.65 4l-.48.98a14.2 14.2 0 0 0-4.34 0L10.35 4a16.1 16.1 0 0 0-3.89 1.31C3.99 9.02 3.32 12.63 3.65 16.19a16.4 16.4 0 0 0 4.78 2.43l1.04-1.42c-.57-.21-1.12-.48-1.64-.79l.4-.3c3.16 1.47 6.59 1.47 9.71 0l.4.3c-.52.31-1.07.58-1.64.79l1.04 1.42a16.4 16.4 0 0 0 4.78-2.43c.39-4.13-.66-7.71-2.98-10.88ZM9.44 14.23c-.95 0-1.73-.87-1.73-1.94s.76-1.95 1.73-1.95 1.74.87 1.73 1.95c0 1.07-.77 1.94-1.73 1.94Zm5.12 0c-.95 0-1.73-.87-1.73-1.94s.76-1.95 1.73-1.95 1.74.87 1.73 1.95c0 1.07-.77 1.94-1.73 1.94Z"/></svg>Join Discord</a>
+</div>
+<div class="platform">Windows focused · lightweight · simple interface</div>
+<div class="users"><i></i><strong id="activeUsers">1</strong><span>Active Users</span><i></i></div>
+</section>
+
+<section class="container preview-wrap reveal"><div class="preview-glow"></div><div class="preview"><img src="thumbnail.png" alt="Pug scripts UI"></div></section>
+
+<section class="container reveal"><div class="trust">
+<div class="trust-item"><strong>$4.99</strong><span>one-time price</span></div>
+<div class="trust-item"><strong>∞</strong><span>lifetime access</span></div>
+<div class="trust-item"><strong>1</strong><span>starting users</span></div>
+<div class="trust-item"><strong>24/7</strong><span>community</span></div>
+</div></section>
+
+<section class="section reveal" id="features"><div class="container">
+<div class="head"><div class="eyebrow">Features</div><h2>Everything in one place.</h2><p>A cleaner way to manage your gaming setup.</p></div>
+<div class="grid">
+<article class="card"><div class="icon">◈</div><h3>System Optimization</h3><p>Useful Windows-focused controls built around a clean and straightforward workflow.</p></article>
+<article class="card"><div class="icon">↯</div><h3>Gaming Tweaks</h3><p>Quick adjustments designed to make your setup easier to tune and manage.</p></article>
+<article class="card"><div class="icon">⚙</div><h3>Simple Controls</h3><p>No confusing dashboard. Find the category and setting you need quickly.</p></article>
+<article class="card"><div class="icon">▣</div><h3>Minimal UI</h3><p>A dark interface inspired by lightweight desktop tools rather than bloated websites.</p></article>
+<article class="card"><div class="icon">⌁</div><h3>Fast Access</h3><p>Keep common tweak categories organized and easy to reach.</p></article>
+<article class="card"><div class="icon">∞</div><h3>Lifetime License</h3><p>Pay once and keep lifetime access instead of dealing with recurring payments.</p></article>
+</div></div></section>
+
+<section class="section reveal" id="updates"><div class="container">
+<div class="head"><div class="eyebrow">Updates</div><h2>What's being built.</h2><p>A simple changelog section ready for future releases.</p></div>
+<div class="timeline">
+<div class="update"><span class="date">CURRENT</span><div><h3>Pug scripts</h3><p>Core product landing page, product listing and community links.</p></div><span class="tag">LIVE</span></div>
+<div class="update"><span class="date">NEXT</span><div><h3>More tweak categories</h3><p>Additional controls and categories can be added without changing the layout.</p></div><span class="tag">PLANNED</span></div>
+<div class="update"><span class="date">SOON</span><div><h3>Pug scripts updates</h3><p>Everything here is focused on Pug scripts — one product, one clean experience.</p></div><span class="tag">PLANNED</span></div>
+</div></div></section>
+
+<section class="section reveal"><div class="container split">
+<div class="splitcard"><div class="eyebrow">Why Pug</div><h3>Built around Pug scripts.</h3><p>Pug scripts keeps the experience focused: useful controls, a clean UI and no unnecessary clutter.</p><div class="checks"><div class="check">Dark, minimal interface</div><div class="check">Fast navigation</div><div class="check">Lifetime access</div><div class="check">Community support</div></div></div>
+<div class="splitcard"><div class="eyebrow">Community</div><h3>Join the Discord.</h3><p>Get updates, talk about the product and stay connected with the community.</p><a class="discord" href="https://discord.gg/hU9RkTymVG" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M19.54 5.31A16.1 16.1 0 0 0 15.65 4l-.48.98a14.2 14.2 0 0 0-4.34 0L10.35 4a16.1 16.1 0 0 0-3.89 1.31C3.99 9.02 3.32 12.63 3.65 16.19a16.4 16.4 0 0 0 4.78 2.43l1.04-1.42c-.57-.21-1.12-.48-1.64-.79l.4-.3c3.16 1.47 6.59 1.47 9.71 0l.4.3c-.52.31-1.07.58-1.64.79l1.04 1.42a16.4 16.4 0 0 0 4.78-2.43c.39-4.13-.66-7.71-2.98-10.88ZM9.44 14.23c-.95 0-1.73-.87-1.73-1.94s.76-1.95 1.73-1.95 1.74.87 1.73 1.95c0 1.07-.77 1.94-1.73 1.94Zm5.12 0c-.95 0-1.73-.87-1.73-1.94s.76-1.95 1.73-1.95 1.74.87 1.73 1.95c0 1.07-.77 1.94-1.73 1.94Z"/></svg>Join Discord</a></div>
+</div></section>
+
+<section class="section reveal" id="pricing"><div class="container">
+<div class="head"><div class="eyebrow">Pricing</div><h2>One product. One payment.</h2><p>Keep your setup simple with lifetime access.</p></div>
+<div class="pricebox"><div class="eyebrow">Pug scripts</div><div class="price">$4.99 <small>lifetime</small></div><p>The best game tweaks for under 5 dollars lifetime. No monthly subscription and no recurring payments.</p><a class="btn" href="https://paritycheats.com/product/pug-scripts-tweaks">Purchase lifetime access →</a><a class="discord" href="https://discord.gg/hU9RkTymVG" target="_blank" rel="noopener">Join Discord</a></div>
+</div></section>
+
+<section class="section reveal" id="faq"><div class="container"><div class="head"><div class="eyebrow">FAQ</div><h2>Frequently asked.</h2></div><div class="faq">
+<details><summary>Is Pug scripts a lifetime purchase?</summary><p>Yes. The product is offered as lifetime access with a one-time purchase.</p></details>
+<details><summary>How much does it cost?</summary><p>The website currently lists Pug scripts at $4.99.</p></details>
+<details><summary>Where do I purchase it?</summary><p>Every Purchase button opens the product page on Parity Cheats.</p></details>
+<details><summary>Where can I get support and updates?</summary><p>Join the Discord community using any Join Discord button.</p></details>
+<details><summary>Is the Active Users number a live analytics counter?</summary><p>No. It is a display counter starting at 1 that advances from elapsed time.</p></details>
+</div></div></section>
+</main>
+
+<footer class="container"><span>© 2026 Pug scripts</span><span>Made for a cleaner setup.</span></footer>
+<script>
+(()=> {
+  const key="pug_counter_v6", period=1200000, out=document.getElementById("activeUsers");
+  let s; try{s=JSON.parse(localStorage.getItem(key)||"null")}catch(e){s=null}
+  if(!s||typeof s.startedAt!=="number"){s={startedAt:Date.now()};localStorage.setItem(key,JSON.stringify(s))}
+  function add(i){const n=Math.sin(i*999.123+17.77)*43758.5453;return Math.floor((n-Math.floor(n))*2)+1}
+  function value(){const periods=Math.floor(Math.max(0,Date.now()-s.startedAt)/period);let v=1;for(let i=0;i<periods;i++)v+=add(i);return v}
+  function update(){const v=value();if(out&&out.textContent!==v.toLocaleString("en-US")){out.classList.remove("stat-pop");void out.offsetWidth;out.classList.add("stat-pop");out.textContent=v.toLocaleString("en-US")}}
+  update();setInterval(update,1000);addEventListener("focus",update);document.addEventListener("visibilitychange",update);
+
+  const glow=document.getElementById("glow"), progress=document.getElementById("progress");
+  addEventListener("pointermove",e=>{if(glow){glow.style.left=e.clientX+"px";glow.style.top=e.clientY+"px"}});
+  addEventListener("pointerleave",()=>{if(glow)glow.style.opacity="0"});addEventListener("pointerenter",()=>{if(glow)glow.style.opacity="1"});
+  function scroll(){const h=document.documentElement.scrollHeight-innerHeight;progress.style.width=(h>0?(scrollY/h)*100:0)+"%"}addEventListener("scroll",scroll,{passive:true});scroll();
+
+  const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");observer.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll(".reveal").forEach(x=>observer.observe(x));
+
+  document.querySelectorAll(".card").forEach(card=>{
+    card.addEventListener("pointermove",e=>{const r=card.getBoundingClientRect();card.style.setProperty("--mx",(e.clientX-r.left)+"px");card.style.setProperty("--my",(e.clientY-r.top)+"px")});
+  });
+})();
+</script>
+
+<script>
+(() => {
+ const c=document.getElementById('snow-canvas'); if(!c) return;
+ const ctx=c.getContext('2d'); let flakes=[]; let w=0,h=0,dpr=1;
+ const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches; if(reduced)return;
+ function resize(){dpr=Math.min(devicePixelRatio||1,2);w=innerWidth;h=innerHeight;c.width=w*dpr;c.height=h*dpr;c.style.width=w+'px';c.style.height=h+'px';ctx.setTransform(dpr,0,0,dpr,0,0);
+  const n=Math.min(170,Math.max(55,Math.floor(w*h/11000))); flakes=Array.from({length:n},()=>({x:Math.random()*w,y:Math.random()*h,r:.7+Math.random()*2.1,v:.35+Math.random()*1.15,s:-.3+Math.random()*.6,a:.3+Math.random()*.55,drift:Math.random()*Math.PI*2}));}
+ function tick(){ctx.clearRect(0,0,w,h); for(const f of flakes){f.y+=f.v;f.drift+=.008;f.x+=f.s+Math.sin(f.drift)*.22;if(f.y>h+5){f.y=-5;f.x=Math.random()*w}if(f.x>w+5)f.x=-5;if(f.x<-5)f.x=w+5;ctx.beginPath();ctx.arc(f.x,f.y,f.r,0,Math.PI*2);ctx.fillStyle='rgba(210,240,255,'+f.a+')';ctx.fill()}requestAnimationFrame(tick)}
+ addEventListener('resize',resize,{passive:true});resize();tick();
+})();
+</script>
+
+</body>
+</html>

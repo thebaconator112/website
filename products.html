@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pug scripts</title>
+<meta name="description" content="Pug scripts products.">
+<link rel="icon" href="pug-icon.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+:root{--bg:#06101f;--line:#173552;--text:#eef8ff;--muted:#7895b5}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(800px 420px at 50% 0,#18335d20,transparent 70%),#06101f;color:var(--text);font-family:"IBM Plex Mono",monospace;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}.container{width:min(1120px,calc(100% - 36px));margin:auto}.header{position:sticky;top:0;z-index:10;border-bottom:1px solid #f2faff1;background:#06101fda;backdrop-filter:blur(20px)}nav{min-height:70px;display:flex;align-items:center;gap:26px}.brand{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700}.brand img{width:33px;height:33px;border-radius:9px;border:1px solid #1d4f80}.navlinks{display:flex;gap:2px}.navlinks a{padding:9px 10px;border-radius:7px;color:#8aa8c8;font-size:10px}.navlinks a:hover,.navlinks a.active{background:#0d2542;color:#f2faff}.spacer{flex:1}.btn{display:inline-flex;justify-content:center;align-items:center;border-radius:8px;padding:11px 17px;background:#f1f2f3;color:#08090b;font-size:10px;font-weight:700;transition:.2s}.btn:hover{transform:translateY(-2px);box-shadow:0 12px 35px #f2faff12}
+.hero{text-align:center;padding:83px 0 39px}.eyebrow{color:#626a73;font-size:8px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:11px}.hero h1{margin:0 0 13px;font-size:clamp(42px,6vw,62px);letter-spacing:-.065em}.hero p{margin:auto;max-width:650px;color:#707780;font-size:10px;line-height:1.8}
+.storebar{display:flex;justify-content:space-between;align-items:center;margin:0 0 14px;color:#5f666f;font-size:8px}.storebar strong{color:#d6d9dc}.products{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding-bottom:90px}.product{overflow:hidden;border:1px solid var(--line);border-radius:15px;background:#090c0f;transition:.2s}.product:hover{transform:translateY(-4px);border-color:#353b42;box-shadow:0 25px 65px #0008}.product-image{aspect-ratio:16/9;overflow:hidden;background:#02060b;border-bottom:1px solid var(--line)}.product-image img{width:100%;height:100%;display:block;object-fit:cover}.product-body{padding:20px}.product-top{display:flex;justify-content:space-between;gap:12px}.product h2{font-size:13px;margin:0}.price{font-size:13px;font-weight:700}.product p{font-size:9px;line-height:1.75;color:#707780;margin:11px 0 17px}.meta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:17px}.tag{padding:5px 7px;border:1px solid #1d4f80;border-radius:6px;color:#7d858e;font-size:7px}.product .btn{width:100%}.coming{padding:21px;border:1px dashed #173552;border-radius:14px;color:#6486a8;font-size:8px;text-align:center;line-height:1.8}.coming b{display:block;color:#8eabc8;margin-bottom:5px;font-size:9px}
+footer{border-top:1px solid #f2faff1;padding:25px 0 31px;color:#6486a8;font-size:8px;display:flex;justify-content:space-between}
+@media(max-width:800px){.products{grid-template-columns:1fr 1fr}}@media(max-width:600px){.container{width:calc(100% - 24px)}nav{min-height:64px}.navlinks{display:none}.hero{padding:62px 0 35px}.products{grid-template-columns:1fr}.storebar{margin-bottom:11px}footer{flex-direction:column;gap:8px}}
+
+.cursor-glow{position:fixed;z-index:0;pointer-events:none;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,#234b8424,transparent 68%);transform:translate(-50%,-50%);transition:opacity .2s}.progress{position:fixed;z-index:100;top:0;left:0;width:0;height:2px;background:#f1f2f3;box-shadow:0 0 15px #f2faff6}.reveal{opacity:0;transform:translateY(20px);transition:.7s cubic-bezier(.2,.8,.2,1)}.reveal.visible{opacity:1;transform:none}.product{position:relative}.product-image{position:relative}.product-image:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,#f2faff08 50%,transparent 70%);transform:translateX(-120%);transition:.6s}.product:hover .product-image:after{transform:translateX(120%)}.product .btn{position:relative;overflow:hidden}.product .btn:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,#f2faff8 50%,transparent 70%);transform:translateX(-120%);transition:.5s}.product .btn:hover:after{transform:translateX(120%)}.storebar{border:1px solid #16304f;border-radius:10px;padding:11px 13px;background:#090c0f}.coming{transition:.2s}.coming:hover{border-color:#353b42;background:#091a2f}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+.btn{background:linear-gradient(135deg,#1b74c9,#43b9ff)!important;color:#04101d!important;border-color:#49bdff!important;box-shadow:0 8px 28px rgba(28,145,230,.20)}
+.btn:hover{box-shadow:0 12px 34px rgba(28,145,230,.34)!important;filter:brightness(1.08)}
+.hero h1 span{color:#55baff!important}.eyebrow,.date{color:#56baff!important}.tag{border-color:#235b8e!important;color:#75bff1!important}
+.preview{box-shadow:0 25px 80px rgba(20,120,210,.16)!important;border-color:#1d4f80!important}
+::selection{background:#39aaff;color:#03101c}
+
+/* V8 BLUE MOTION + SNOW */
+#snow-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:.7}
+.ambient{position:fixed;width:42vw;height:42vw;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;opacity:.16;animation:ambientFloat 12s ease-in-out infinite alternate}
+.ambient-a{background:#168cff;top:-15vw;left:-12vw}.ambient-b{background:#62c8ff;right:-18vw;bottom:-20vw;animation-delay:-5s}
+body>*:not(#snow-canvas):not(.ambient){position:relative;z-index:2}
+@keyframes ambientFloat{from{transform:translate3d(0,0,scale(1))}to{transform:translate3d(35px,25px,0) scale(1.12)}}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 0 rgba(58,170,255,0),0 0 18px rgba(58,170,255,.08)}50%{box-shadow:0 0 34px rgba(58,170,255,.22),0 0 70px rgba(58,170,255,.08)}}
+@keyframes floatCard{0%,100%{transform:translateY(0) rotateX(0)}50%{transform:translateY(-8px) rotateX(1deg)}}
+.hero-card,.product-card,.preview,.feature-card{animation:floatCard 7s ease-in-out infinite}
+.hero-card,.product-card,.preview{animation:floatCard 7s ease-in-out infinite,pulseGlow 5s ease-in-out infinite}
+.button,.btn,.purchase,.discord,.cta{transition:transform .25s ease,box-shadow .25s ease,filter .25s ease}
+.button:hover,.btn:hover,.purchase:hover,.discord:hover,.cta:hover{transform:translateY(-3px) scale(1.025);filter:brightness(1.08)}
+@media(prefers-reduced-motion:reduce){#snow-canvas{display:none}.ambient,.hero-card,.product-card,.preview,.feature-card{animation:none!important}}
+
+</style>
+
+<style id="top-bug-fix">
+html{scroll-padding-top:90px;overflow-x:hidden}
+body{margin:0;overflow-x:hidden}
+header,.site-header,.navbar,.nav{z-index:1000}
+.hero{position:relative;isolation:isolate}
+.snow,.snowfall,.snow-container{pointer-events:none!important;z-index:2!important}
+</style>
+<style id="top-layout-fix">html,body{margin:0!important;padding:0!important;overflow-x:hidden}#snow-canvas,.ambient,.progress,.cursor-glow{position:fixed!important}.header{position:sticky!important;top:0!important;z-index:1000!important;margin:0!important}.announce{position:relative!important;margin:0!important}.hero{margin-top:0!important}</style></head>
+<body>
+<canvas id="snow-canvas" aria-hidden="true"></canvas>
+<div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="progress" id="progress"></div><div class="cursor-glow" id="glow"></div>
+<header class="header"><nav class="container">
+<a class="brand" href="index.html"><img src="pug-icon.png" alt=""><span>Pug scripts</span></a>
+<div class="navlinks"><a class="active" href="products.html">Products</a><a href="index.html#features">Features</a><a href="index.html#updates">Updates</a><a href="index.html#pricing">Pricing</a><a href="index.html#faq">FAQ</a></div>
+<div class="spacer"></div><a class="btn" href="https://paritycheats.com/product/pug-scripts-tweaks">Purchase ↗</a>
+</nav></header>
+<main>
+<section class="hero container reveal"><div class="eyebrow">Store</div><h1>Products</h1><p>Everything currently available from Pug scripts. Pug scripts can be added here later.</p></section>
+<section class="container reveal"><div class="storebar"><span><strong>1</strong> product available</span><span>Lifetime access</span></div></section>
+<section class="products container reveal">
+<article class="product">
+<div class="product-image"><img src="thumbnail.png" alt="Pug scripts application preview"></div>
+<div class="product-body"><div class="product-top"><h2>Pug scripts</h2><span class="price">$4.99</span></div><p>The best game tweaks for under 5 dollars lifetime!</p><div class="meta"><span class="tag">LIFETIME</span><span class="tag">GAME TWEAKS</span><span class="tag">WINDOWS</span></div><a class="btn" href="https://paritycheats.com/product/pug-scripts-tweaks">View product →</a></div>
+</article>
+<div class="coming"><b>Pug scripts</b>The store layout is ready for additional products whenever you add them.</div>
+</section>
+</main>
+<footer class="container"><span>© 2026 Pug scripts</span><span>Store</span></footer>
+<script>
+(()=>{const g=document.getElementById("glow"),p=document.getElementById("progress");addEventListener("pointermove",e=>{g.style.left=e.clientX+"px";g.style.top=e.clientY+"px"});function s(){const h=document.documentElement.scrollHeight-innerHeight;p.style.width=(h>0?scrollY/h*100:0)+"%"}addEventListener("scroll",s,{passive:true});s();const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");o.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll(".reveal").forEach(x=>o.observe(x));})();
+</script>
+<script>
+(() => {
+ const c=document.getElementById('snow-canvas'); if(!c) return;
+ const ctx=c.getContext('2d'); let flakes=[]; let w=0,h=0,dpr=1;
+ const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches; if(reduced)return;
+ function resize(){dpr=Math.min(devicePixelRatio||1,2);w=innerWidth;h=innerHeight;c.width=w*dpr;c.height=h*dpr;c.style.width=w+'px';c.style.height=h+'px';ctx.setTransform(dpr,0,0,dpr,0,0);
+  const n=Math.min(170,Math.max(55,Math.floor(w*h/11000))); flakes=Array.from({length:n},()=>({x:Math.random()*w,y:Math.random()*h,r:.7+Math.random()*2.1,v:.35+Math.random()*1.15,s:-.3+Math.random()*.6,a:.3+Math.random()*.55,drift:Math.random()*Math.PI*2}));}
+ function tick(){ctx.clearRect(0,0,w,h); for(const f of flakes){f.y+=f.v;f.drift+=.008;f.x+=f.s+Math.sin(f.drift)*.22;if(f.y>h+5){f.y=-5;f.x=Math.random()*w}if(f.x>w+5)f.x=-5;if(f.x<-5)f.x=w+5;ctx.beginPath();ctx.arc(f.x,f.y,f.r,0,Math.PI*2);ctx.fillStyle='rgba(210,240,255,'+f.a+')';ctx.fill()}requestAnimationFrame(tick)}
+ addEventListener('resize',resize,{passive:true});resize();tick();
+})();
+</script>
+
+</body>
+</html>
