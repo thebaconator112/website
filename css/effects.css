@@ -1,0 +1,78 @@
+#cursor-glow {
+    position: fixed;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 50;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(233, 30, 140, 0.14) 0%, rgba(236, 63, 160, 0.06) 40%, transparent 70%);
+    mix-blend-mode: screen;
+    opacity: 0;
+    transition: opacity .25s ease;
+    will-change: transform, opacity;
+}
+body.has-pointer #cursor-glow {
+    opacity: 1;
+}
+
+#snow {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 40;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+#snow.active {
+    opacity: 0.55;
+}
+
+#purchase-toasts {
+    position: fixed;
+    left: 22px;
+    bottom: 22px;
+    z-index: 120;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+    pointer-events: none;
+    max-width: min(340px, calc(100vw - 40px));
+}
+.purchase-toast {
+    pointer-events: none;
+    background: rgba(18, 12, 16, 0.92);
+    border: 1px solid rgba(233, 30, 140, 0.35);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45), 0 0 20px rgba(233, 30, 140, 0.08);
+    padding: 14px 16px;
+    color: #e8e0e6;
+    font-size: 13px;
+    line-height: 1.45;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity .35s ease, transform .35s ease;
+}
+.purchase-toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.purchase-toast .tier {
+    color: #e878b4;
+    font-weight: 400;
+}
+.purchase-toast .loc {
+    color: #9c8d96;
+    font-size: 12px;
+}
+.purchase-toast .dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #e91e8c;
+    box-shadow: 0 0 8px rgba(233, 30, 140, 0.8);
+    margin-right: 8px;
+    vertical-align: middle;
+}
